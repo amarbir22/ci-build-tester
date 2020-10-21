@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Get Latest Git Repo') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/amarbir22/ci-build-tester.git'
+                sh './build.sh'
+            }
+        }
+    }
+}
