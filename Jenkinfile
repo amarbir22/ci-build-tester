@@ -1,12 +1,17 @@
 pipeline {
-    agent any
-    stages {
-        stage('Get Latest Git Repo') {
-            steps {
-                // Get some code from a GitHub repository
-                git 'https://github.com/amarbir22/ci-build-tester.git'
-                sh './build.sh'
-            }
-        }
+  agent any
+  stages {
+    stage('Get Latest Git Repo') {
+      steps {
+        // Get some code from a GitHub repository
+        git 'https://github.com/amarbir22/ci-build-tester.git'
+      }
     }
+    stage('Run UI Tests') {
+      steps {
+        // Get some code from a GitHub repository
+        sh 'cd ui-tests && npm run test'
+      }
+    }
+  }
 }
